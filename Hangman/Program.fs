@@ -15,6 +15,8 @@ type Game(secret: string, ?word0: string, ?hangman0: int) =
     member this.Secret = secret
     member this.Word =  word
     member this.Hangman = hangman 
+    member this.isWon = this.Word = this.Secret
+    member this.isLost = this.Hangman = 0
 
 
 let guess (game: Game) (c: char) = 
@@ -23,7 +25,10 @@ let guess (game: Game) (c: char) =
         | _ -> Game(game.Secret, game.Word, game.Hangman - 1)
 
 let continueWith (game: Game) = 
-    if game.Hangman = 0 || game.Word = game.Secret then None else Some game
+    match game with
+        | g when g.isLost -> printf "You loose, the secret was %s" game.Secret; None
+        | g when g.isWon -> printf "You won"; None
+        | x -> Some x    
 
 [<EntryPoint>]
 let main argv = 
@@ -36,4 +41,5 @@ let main argv =
         Option.iter play
 
     play(Game(secret))
+    let wait = Console.ReadLine()
     0 // return an integer exit code
