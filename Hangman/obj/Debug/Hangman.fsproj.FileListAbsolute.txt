@@ -6,3 +6,11 @@ C:\Users\Marek\Documents\Visual Studio 2013\Projects\Hangman\Hangman\bin\Debug\F
 C:\Users\Marek\Documents\Visual Studio 2013\Projects\Hangman\Hangman\bin\Debug\FSharp.Core.xml
 C:\Users\Marek\Documents\Visual Studio 2013\Projects\Hangman\Hangman\obj\Debug\Hangman.exe
 C:\Users\Marek\Documents\Visual Studio 2013\Projects\Hangman\Hangman\obj\Debug\Hangman.pdb
+C:\Users\sed\Documents\GitHub\Hangman\Hangman\bin\Debug\Hangman.exe.config
+C:\Users\sed\Documents\GitHub\Hangman\Hangman\bin\Debug\Hangman.XML
+C:\Users\sed\Documents\GitHub\Hangman\Hangman\bin\Debug\Hangman.exe
+C:\Users\sed\Documents\GitHub\Hangman\Hangman\bin\Debug\Hangman.pdb
+C:\Users\sed\Documents\GitHub\Hangman\Hangman\bin\Debug\FSharp.Core.dll
+C:\Users\sed\Documents\GitHub\Hangman\Hangman\bin\Debug\FSharp.Core.xml
+C:\Users\sed\Documents\GitHub\Hangman\Hangman\obj\Debug\Hangman.exe
+C:\Users\sed\Documents\GitHub\Hangman\Hangman\obj\Debug\Hangman.pdb
