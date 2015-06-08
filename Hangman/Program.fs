@@ -18,28 +18,27 @@ type Game(secret: string, ?word0: string, ?hangman0: int) =
     member this.isWon = this.Word = this.Secret
     member this.isLost = this.Hangman = 0
 
-
-let guess (game: Game) (c: char) = 
+let makeGuess (game: Game) (c: char) = 
     match game.Secret.Contains(c.ToString()) with 
         | true -> Game(game.Secret, maskWord game.Secret game.Word (Some(c)), game.Hangman)
         | _ -> Game(game.Secret, game.Word, game.Hangman - 1)
 
-let continueWith (game: Game) = 
+let isNotOver (game: Game) = 
     match game with
-        | g when g.isLost -> printf "You loose, the secret was %s" game.Secret; None
-        | g when g.isWon -> printf "You won"; None
-        | x -> Some x    
+        | g when g.isLost -> printf "You loose, the secret was %s" game.Secret; false
+        | g when g.isWon -> printf "You won"; false
+        | _ -> true          
 
 [<EntryPoint>]
 let main argv = 
     let index = Random().Next(secrets.Length)
     let secret: string = List.nth secrets index
-    let rec play = fun (game: Game) -> 
-        Console.ReadKey(true).KeyChar |> 
-        guess game |>
-        continueWith |>        
-        Option.iter play
+    let game = Game(secret);    
 
-    play(Game(secret))
-    let wait = Console.ReadLine()
+    let input = Seq.initInfinite (fun _ -> Console.ReadKey(true).KeyChar)        
+    let playThrough = Seq.scan makeGuess game input |> Seq.takeWhile isNotOver
+    
+    Seq.iter (fun g -> printfn "Make a guess") playThrough
+
+    Console.ReadLine() |> ignore;
     0 // return an integer exit code
